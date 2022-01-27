@@ -1,0 +1,7 @@
+-- create database jdbc;
+-- use jdbc;
+-- create table users (id int, name varchar(255));
+-- insert into users (id, name) values (1, "Leonan"), (2, "Luiz"), (3, "Wesley");
+-- select * from users;
+-- drop table users;
+-- delete from users where id = 2;
