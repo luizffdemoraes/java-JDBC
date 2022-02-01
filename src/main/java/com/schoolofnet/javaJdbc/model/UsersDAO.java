@@ -59,4 +59,11 @@ public class UsersDAO {
         statement.setString(1, user.getName());
         statement.execute();
     }
+
+    public void remove(Users users) throws SQLException {
+        String query = "DELETE FROM users WHERE id = ?";
+        statement = con.prepareStatement(query);
+        statement.setInt(1, users.getId());
+        statement.execute();
+    }
 }
