@@ -14,6 +14,11 @@ public class Users {
         this.name = name;
     }
 
+    public Users(String name) {
+        this.name = name;
+    }
+
+
     public Integer getId() {
         return this.id;
     }

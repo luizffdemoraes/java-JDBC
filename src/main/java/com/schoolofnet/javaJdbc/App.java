@@ -23,9 +23,11 @@ public class App {
             System.out.println(user.getName());
         }
 
-        Users user = usersDAO.findById(7);
+        Users user = usersDAO.findById(2);
 
         System.out.println("Find by id => " + user.getName());
+
+        usersDAO.insert(new Users( "Debora Cruz"));
 
         // Trabalhar com QUERY
         // PreparedStatement é indicado para operações de DML dados concretos

@@ -41,11 +41,22 @@ public class UsersDAO {
         Users user = null;
 
         while (rs.next()) {
-//            user = new Users(rs.getInt("id"), rs.getString("name"));
-            user.setId(rs.getInt("id"));
-            user.setName(rs.getString("name"));
+            user = new Users(rs.getInt("id"), rs.getString("name"));
+//            user.setId(rs.getInt("id"));
+//            user.setName(rs.getString("name"));
         }
 
         return user;
+    }
+
+    public void insert(Users user) throws SQLException {
+//        String query = "INSERT INTO users (id , name) VALUES (?, ?)";
+        String query = "INSERT INTO users ( name) VALUES ( ?)";
+
+        statement = con.prepareStatement(query);
+
+//        statement.setInt(1, user.getId());
+        statement.setString(1, user.getName());
+        statement.execute();
     }
 }
