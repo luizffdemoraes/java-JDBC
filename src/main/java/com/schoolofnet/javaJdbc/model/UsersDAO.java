@@ -31,4 +31,21 @@ public class UsersDAO {
 
         return users;
     }
+
+    public Users findById(Integer id) throws SQLException {
+        String query = "SELECT * FROM users WHERE id  = ?";
+        statement = con.prepareStatement(query);
+        statement.setInt(1, id);
+
+        ResultSet rs = statement.executeQuery();
+        Users user = null;
+
+        while (rs.next()) {
+//            user = new Users(rs.getInt("id"), rs.getString("name"));
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+        }
+
+        return user;
+    }
 }
