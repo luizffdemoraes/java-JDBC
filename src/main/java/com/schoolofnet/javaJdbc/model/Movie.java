@@ -7,7 +7,7 @@ public class Movie {
     private String name;
 
     public Movie() {
-        
+
     }
 
     public Movie(Integer id, String name) {

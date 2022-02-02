@@ -14,9 +14,9 @@ public class UsersDAO {
     private Connection con;
     private PreparedStatement statement;
 
-    public UsersDAO() {
-        con = ConnectionFactory.getConnection();
-    }
+//    public UsersDAO() {
+//        con = ConnectionFactory.getConnection();
+//    }
 
     public List<Users> findAll() throws SQLException {
         String query = "SELECT * FROM users";

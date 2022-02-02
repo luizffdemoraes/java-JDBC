@@ -6,32 +6,55 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static ConnectionFactory instance = new ConnectionFactory();
-    public static final String URL = "jdbc:mysql://localhost:3306/jdbc";
+    //    private static ConnectionFactory instance = new ConnectionFactory();
+    public static final String URL = "jdbc:mysql://localhost:3306/movies?serverTimezone=UTC";
     public static final String USER = "root";
     public static final String PASSWORD = "root";
     public static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
 
-    private ConnectionFactory() {
-        // This is deprecated, The driver is automatically
+    private Connection createConnection() throws ClassNotFoundException {
+        Connection connection = null;
+
         try {
             Class.forName(DRIVER_CLASS);
-        } catch (ClassNotFoundException ex) {
-            ex.getMessage();
+            connection = DriverManager.getConnection(URL);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return connection;
     }
 
-    private Connection createConnection() {
-        Connection con = null;
+    public Connection getConnection() {
         try {
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException ex) {
-            ex.getMessage();
+            return createConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return con;
-    }
-
-    public static Connection getConnection() {
-        return instance.createConnection();
+        return null;
     }
 }
+
+
+//    private ConnectionFactory() {
+//        // This is deprecated, The driver is automatically
+//        try {
+//            Class.forName(DRIVER_CLASS);
+//        } catch (ClassNotFoundException ex) {
+//            ex.getMessage();
+//        }
+//    }
+//
+//    private Connection createConnection() {
+//        Connection con = null;
+//        try {
+//            con = DriverManager.getConnection(URL, USER, PASSWORD);
+//        } catch (SQLException ex) {
+//            ex.getMessage();
+//        }
+//        return con;
+//    }
+//
+//    public static Connection getConnection() {
+//        return instance.createConnection();
+//    }
+//}

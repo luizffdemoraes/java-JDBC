@@ -1,5 +1,6 @@
 package com.schoolofnet.javaJdbc;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class App {
@@ -18,6 +19,7 @@ public class App {
         switch (choice) {
             case 1:
                 System.out.println("Inserted");
+                Connection con = new ConnectionFactory().getConnection();
                 break;
             case 2:
                 System.out.println("List");
