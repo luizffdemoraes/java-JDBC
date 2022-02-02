@@ -3,33 +3,57 @@ package com.schoolofnet.javaJdbc;
 import com.schoolofnet.javaJdbc.model.Users;
 import com.schoolofnet.javaJdbc.model.UsersDAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) throws SQLException {
 
-
-        ConnectionFactory.getConnection();
-
-//        new ConnectionFactoryOld().getConnection();
-//        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc?useLegacyDatatimeCode=false&serverTimeZone=UTC", "root", "root");
-        System.out.println("Connected");
-
-        UsersDAO usersDAO = new UsersDAO();
-        List<Users> users = usersDAO.findAll();
-        for (int i = 0; i < users.size(); i++) {
-            Users user = users.get(i);
-            System.out.println(user.getName());
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Loaded");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Failed to Load");
+            ex.printStackTrace();
         }
 
-        Users user = usersDAO.findById(3);
+        Connection connection = null;
 
-        System.out.println("Find by id => " + user.getName());
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/movies?serverTimezone=UTC", "root", "root");
 
-        usersDAO.insert(new Users( "Debora Cruz"));
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
 
-        usersDAO.remove(user);
+        if (connection != null) {
+            System.out.println("Connected");
+        } else {
+            System.out.println("Connect failed");
+        }
+
+//        ConnectionFactory.getConnection();
+//
+////        new ConnectionFactoryOld().getConnection();
+////        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc?useLegacyDatatimeCode=false&serverTimeZone=UTC", "root", "root");
+//        System.out.println("Connected");
+//
+//        UsersDAO usersDAO = new UsersDAO();
+//        List<Users> users = usersDAO.findAll();
+//        for (int i = 0; i < users.size(); i++) {
+//            Users user = users.get(i);
+//            System.out.println(user.getName());
+//        }
+//
+//        Users user = usersDAO.findById(3);
+//
+//        System.out.println("Find by id => " + user.getName());
+//
+//        usersDAO.insert(new Users( "Debora Cruz"));
+//
+//        usersDAO.remove(user);
 
         // Trabalhar com QUERY
         // PreparedStatement é indicado para operações de DML dados concretos
