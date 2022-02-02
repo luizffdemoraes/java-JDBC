@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
     //    private static ConnectionFactory instance = new ConnectionFactory();
-    public static final String URL = "jdbc:mysql://localhost:3306/movies?serverTimezone=UTC";
+    public static final String URL = "jdbc:mysql://localhost:3306/movies";
     public static final String USER = "root";
     public static final String PASSWORD = "root";
     public static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
@@ -17,7 +17,7 @@ public class ConnectionFactory {
 
         try {
             Class.forName(DRIVER_CLASS);
-            connection = DriverManager.getConnection(URL);
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }

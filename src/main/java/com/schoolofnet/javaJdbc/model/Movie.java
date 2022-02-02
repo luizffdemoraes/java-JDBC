@@ -15,6 +15,10 @@ public class Movie {
         this.name = name;
     }
 
+    public Movie(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return this.id;
     }
