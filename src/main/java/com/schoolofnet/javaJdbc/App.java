@@ -6,6 +6,7 @@ import com.schoolofnet.javaJdbc.model.UsersDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 public class App {
@@ -28,11 +29,21 @@ public class App {
             ex.printStackTrace();
         }
 
-        if (connection != null) {
-            System.out.println("Connected");
-        } else {
+        if (connection == null) {
             System.out.println("Connect failed");
+            return;
         }
+
+        Statement statement = connection.createStatement();
+
+//        String sql = "CREATE TABLE IF NOT EXISTS movie (id INTEGER NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, PRIMARY KEY(id))";
+
+        String sql = "DROP TABLE movie";
+
+        //Comando DDL
+        statement.executeUpdate(sql);
+
+
 
 //        ConnectionFactory.getConnection();
 //
