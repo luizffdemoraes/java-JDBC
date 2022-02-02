@@ -1,49 +1,34 @@
 package com.schoolofnet.javaJdbc;
 
-import com.schoolofnet.javaJdbc.model.Users;
-import com.schoolofnet.javaJdbc.model.UsersDAO;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
+import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Loaded");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Failed to Load");
-            ex.printStackTrace();
+        System.out.println("----------- Menu -----------");
+        System.out.println("1 - List movies");
+        System.out.println("2 - Create new movie");
+        System.out.println("3 - Update a movie");
+        System.out.println("4 - Delete a movie");
+        System.out.println("----------- Menu -----------");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Inserted");
+                break;
+            case 2:
+                System.out.println("List");
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+
+
         }
-
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/movies?serverTimezone=UTC", "root", "root");
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        if (connection == null) {
-            System.out.println("Connect failed");
-            return;
-        }
-
-        Statement statement = connection.createStatement();
-
-//        String sql = "CREATE TABLE IF NOT EXISTS movie (id INTEGER NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, PRIMARY KEY(id))";
-
-        String sql = "DROP TABLE movie";
-
-        //Comando DDL
-        statement.executeUpdate(sql);
-
-
 
 //        ConnectionFactory.getConnection();
 //
