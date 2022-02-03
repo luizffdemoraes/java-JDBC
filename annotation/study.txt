@@ -1,0 +1,29 @@
+O que é JDBC?
+
+JDBC é o acrônimo de Java Database Connectivity. Pode ser conceituado como uma API para interagir com banco de dados de maneira independente através do Java.
+
+O que ela inclui?
+
+O JDBC te dá todas as ferramentas necessárias para você trabalhar com o banco de dados diretamente no Java, ou seja, você consegue realizar conexões, trabalhar com SQL  e trabalhar com SQL e trabalhar com os resultados das transações geradas pelo SQL tudo isso de forma abistrata através do uso da API disponível.
+
+Onde posso usar?
+
+O JDBC hoje é a base para qualquer tipo de conexão usando o Java principalmente. Você utiliza em todos os lugares sem perceber.
+
+Principais pontos
+
+1. Driver API
+a. Toda parde de conexão
+2. JDBC API
+a. Toda parte de abistração
+
+Tipos de drivers
+
+Tipo 1: Primeiro formato de JDBC, utilizava recursos instalados, na máquina do cliente para conexão
+Tipo 2: Primeira versão da API JDBC criada em C porém totalmente dependente da API em C.
+Tipo 3: Primeira versão feita em Java, utilizada até a pouco tempo e fazia o uso de sockets para criar conexão.
+Tipo 4: 100% feito em Java, é a versão atual e se comunica diretamente com o banco de dados através de socket.
+
+Tipos de Statements
+Statement: Uso geral para acessar e manipular a sua base de dados. Geralmente utilizado quando você precisa executar um script estático em runtime.
+PreparedStatement: Usado especificamente quando você deseja rodar várias vezes o mesmo comando aceita diferentes parâmetros em runtime.
